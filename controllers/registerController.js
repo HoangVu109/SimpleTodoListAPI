@@ -21,7 +21,7 @@ exports.register = async function(req, res, next) {
                 }
             });
         } else {
-            res.json({ err: 'Email đã được sử dụng' });
+            res.status(409).json({ err: 'Email đã được sử dụng' });
         }
     } catch (error) {
         return res.status(500).json({ err: "Lỗi server." });
