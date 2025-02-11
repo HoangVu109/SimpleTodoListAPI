@@ -1,7 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
-const routes = require('./routes/routes')
+const authenticationRoutes = require('./routes/authenticationRoutes')
 
 
 
@@ -29,7 +29,7 @@ async function run() {
 run().catch(console.dir);
 
 app.use(express.json());
-app.use('/',routes)
+app.use('/',authenticationRoutes)
 
 
 
