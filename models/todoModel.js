@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const todoSchema = new Schema({
-    email: {type: String, unique: false},
-    title: {type: String, required: false},
-    description: {type: String, required: false},
+    email: {type: String, required: true},
+    title: {type: String, required: true},
+    description: {type: String, required: true},
 });
 
 module.exports = mongoose.model('Todo', todoSchema)

@@ -2,7 +2,7 @@ const Todo = require('../models/todoModel')
 
 exports.create = async function(req,res) {
     try {
-        const newTodo = new Todo(Object.assign(req.body,req.email))
+        const newTodo = new Todo(req.body)
         try {
             const result = await newTodo.save();
             res.json({ id: result._id,title: result.title, description: result.description });

@@ -11,7 +11,6 @@ exports.authMiddleware = async function(req,res,next) {
 		return res.status(400).json({err:'Không tìm thấy access token'});
 	}
     const verified = await ultis.verifyToken(accessTokenFromHeader);
-    console.log(verified)
 	if (!verified) { 
 		return res
 			.status(403)
@@ -23,7 +22,7 @@ exports.authMiddleware = async function(req,res,next) {
 		return res.status(403).json({err : 'Access token không hợp lệ.'});
 	}
     const email = decoded.email;
-    res.email = email;
+    req.body.email = email;
 
 	return next();
 };
