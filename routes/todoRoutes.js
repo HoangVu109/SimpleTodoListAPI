@@ -1,11 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const {authMiddleware} = require('../middlewares/authMiddleware')
-const {create, update} = require('../controllers/todoControllers')
-const { ownerAuthMiddleware } = require('../middlewares/ownerAuthMiddleware')
+const {todoCreate, todoUpdate, todoDelete, todoGet} = require('../controllers/todoControllers')
+const {ownerAuthMiddleware} = require('../middlewares/ownerAuthMiddleware')
 
 router.use(authMiddleware)
+router.post('/', todoCreate)
 
-router.post('/', create)
-router.post('/:todoId',ownerAuthMiddleware,update)
+router.post('/:todoId',ownerAuthMiddleware,todoUpdate)
+router.delete('/:todoId',ownerAuthMiddleware, todoDelete)
+router.get('/',todoGet)
+
+
 module.exports = router;

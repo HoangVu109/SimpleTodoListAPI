@@ -12,13 +12,9 @@ exports.ownerAuthMiddleware = async function(req,res,next) {
     const _id = new mongoose.Types.ObjectId(req.params.todoId);
     try {
         const doc = await Todo.findById(_id)
-        console.log(doc);
-        
         if(doc==null) {
             return res.status(404).json({message:'Không tìm thấy bản ghi'})
         } else {
-            console.log(doc)
-            console.log(doc.email)
             if(doc.email.localeCompare(reqEmail) != 0) {
                 return res.status(403).json({message:'Forbidden'})
             } else {
@@ -26,6 +22,8 @@ exports.ownerAuthMiddleware = async function(req,res,next) {
             }
         }
     } catch (error) {
+        console.log(error);
+        
         next(error);
     }
 };

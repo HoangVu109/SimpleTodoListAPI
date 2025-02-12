@@ -12,7 +12,7 @@ const db = mongoose.connection;
 dotenv.config()
 
 //connect db
-const uri = process.env.DB_URL
+const uri = process.env.DB_URL;
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 async function run() {
     try {
@@ -23,6 +23,7 @@ async function run() {
       console.log('DB hiện tại: '+ mongoose.connection.db.databaseName)
     } catch (e) {
         console.log("Kết nối thất bại");
+        process.exit();
     }
 }
 
