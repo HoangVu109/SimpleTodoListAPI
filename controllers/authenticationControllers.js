@@ -20,11 +20,11 @@ exports.register = async function(req, res) {
                     res.json({ token: token });
                 } catch (saveErr) {
                     console.log(saveErr)
-                    return res.json({ err: saveErr,desc: 'Lỗi' });
+                    return res.status(401).json({ message: 'Unauthorized' });
                 }
             });
         } else {
-            res.status(409).json({ err: 'Email đã được sử dụng' });
+            res.status(401).json({ message: 'Unauthorized' });
         }
     } catch (error) {
         return res.status(500).json({ err: "Lỗi server." });
