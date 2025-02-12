@@ -2,7 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const authenticationRoutes = require('./routes/authenticationRoutes')
-
+const todoRoutes = require('./routes/todoRoutes')
 
 
 const app = express()
@@ -30,7 +30,7 @@ run().catch(console.dir);
 
 app.use(express.json());
 app.use('/',authenticationRoutes)
-
+app.use('/todos',todoRoutes)
 
 
 

@@ -17,3 +17,22 @@ exports.generateJWT = async function (payload) {
         console.error('Lỗi tạo JWT');
     }
   }
+
+exports.decodeToken = function(accessTokenFromHeader) {
+    const decoded = jwt.decode(
+		accessTokenFromHeader,
+		secretKey,
+	);
+    return decoded
+}
+
+exports.verifyToken = async function(accessTokenFromHeader) {
+    return new Promise((resolve,reject) => {
+        jwt.verify(accessTokenFromHeader, secretKey, (err, result) => {
+            if (err) {
+                console.error("JWT không hợp lệ:", err);
+                return resolve(false);
+            } else return resolve(true);
+        });
+    })
+}
