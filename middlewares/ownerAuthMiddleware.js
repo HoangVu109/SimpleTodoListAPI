@@ -1,5 +1,5 @@
 const Todo = require('../models/todoModel')
-const ultis = require('../ultis/ultis');
+const ultis = require('../utils/utils');
 const path = require('path');
 const mongoose = require('mongoose');
 const { log } = require('console');

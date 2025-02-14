@@ -1,5 +1,5 @@
 const Account = require('../models/accountModel')
-const ultis = require('../ultis/ultis');
+const ultis = require('../utils/utils');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname,  '..', '.env') });
 

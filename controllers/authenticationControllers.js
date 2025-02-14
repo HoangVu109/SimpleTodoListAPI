@@ -1,6 +1,6 @@
 const Account = require('../models/accountModel')
 const bcrypt = require('bcrypt')
-const ultis = require('../ultis/ultis')
+const ultis = require('../utils/utils')
 
 exports.register = async function(req, res) {
     try {
